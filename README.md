@@ -22,8 +22,5 @@ Admin page-->
 
 ![image](https://github.com/khade36/FoodieApp_/assets/123576969/0a709385-0da4-48ea-937a-5be10b55ea4e)
 
-User profile page -->
-
-![image](https://github.com/khade36/FoodieApp_/assets/123576969/46393099-af36-42de-a854-4743ae3871bf)
 
 
