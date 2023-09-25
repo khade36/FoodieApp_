@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<!-- <button class="button" (click)="logOut()">Logout</button> -->
+<!-- <button class="button"  (click)="update()">Update Items</button> -->
+<button id="button" (click)="AddRes()">Add Item</button>
+
+<div class="box" *ngIf="popWindow()">
+    <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>Add Item</h2>
+          <a class="close" style="cursor: alias;" (click)="closeBtn()">×</a>
+<div class="content"> 
+
+<form (ngSubmit)="postItem(myform.value)" #myform="ngForm">
+    <label for="itemName" style="margin-left: 34px;">Item Name :</label>  
+    <input type="text" name="itemName" id="itemName" ngModel/><br/>
+
+    <label for="itemPrice" style="margin-left: 38px;">Item Price :</label>
+    <input type="number" name="itemPrice" id="itemPrice" ngModel/><br/>
+
+    <label for="description">Item Description :</label>
+    <input type="text" name="description" id="description" ngModel/><br/><br/>
+
+    <!-- <label for="itemQty">Item Qty :</label>
+    <input type="text" name="itemQty" id="itemQty" ngModel/><br/><br/> -->
+    
+    <label for="imageFile"style="margin-left: 15px;">Item Picture:</label>
+    <input type="file" id="imageFile" name="imageFile" (change)="upload($event)" /><br/><br/>
+
+    <button type="submit">Submit</button>
+</form></div></div></div></div>
+
+
+<div *ngIf="cardWindow()" >
+    <div style="display: flex;float: left;" style="margin-left: 40px;margin-right: 30px;margin-top:20px;margin-bottom: 20px;">
+<div class="main" *ngFor="let x of itemsArray">
+    <button (mouseenter)="getItemName(itemName.value)" #itemName value={{x.itemName}}>
+    <ul class="cards" >
+        <li class="cards_item"  >
+            <div class="card">
+                <h2 class="card_title">{{x.itemName}}</h2>
+                <button #deleteItemRes value={{x.itemName}} (click)="delete(deleteItemRes.value)" #deleteItem><i style="font-size:24px" class="fa">&#xf014;</i>Delete</button>
+                <button (click)="updatePrice()">✎Update Price</button>
+                <div class="card_image">
+                    <img src="..\assets\{{x.itemPic}}" alt="mixed vegetable salad in a mason jar. ">
+                    <div class="price">Item Price : ₹ {{x.itemPrice}}</div>
+                </div>
+                <div class="card_content">
+                    <div class="card_text">
+                        <p>{{x.description}}</p>
+                        <!-- <p>Item Qty : {{x.itemQty}}</p> -->
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</button>
+</div>
+</div>
+
+</div>
+<app-footer></app-footer>

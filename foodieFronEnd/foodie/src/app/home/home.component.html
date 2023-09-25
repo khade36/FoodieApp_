@@ -1,0 +1,38 @@
+<app-header (eventSearch)="getSearchvalue($event)"></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<!-- <button (click)="getItem()">Click here to load</button> -->
+  
+<div class="main" *ngFor="let x of userArray">
+    <div *ngIf="getSearchValue=='' || x.itemName.toLowerCase().includes(getSearchValue) || x.description.toLowerCase().includes(getSearchValue)">  
+    <ul class="cards">
+        <li class="cards_item">
+            <div class="card">
+                <h2 class="card_title">{{x.itemName}}</h2>
+                <div class="card_image">
+                    <img src="..\assets\{{x.itemPic}}"  alt="mixed vegetable salad in a mason jar. ">
+                    <div class="price">₹ {{x.itemPrice}}</div>
+                </div>
+                <div class="card_content">
+                    <div class="card_text">
+                        <p>Item Description : {{x.description}}</p>
+                        <p class="card_title">Restaurant Name : {{restoName}}</p>
+                        <!-- <p>Item Qty : {{x.itemQty}}</p> -->
+                        <button   (click)="addToCart(x)" class="button">Add To Cart</button>
+                        <select  class="button" [(ngModel)]="x.itemQty"  style="font-size: 15px;border: solid 2px black;margin-left: 80px;size: 30px;" >
+                            <option  value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <!-- <input type="number" [(ngModel)]="x.itemQty" min="1" class="button" placeholder="Qty"> -->
+                        <button (click)="addFavItem(x.itemName,x.itemPrice,x.description,x.itemPic)" class="left-bt">❤️</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </div>
+ </div>   
+<app-footer></app-footer>

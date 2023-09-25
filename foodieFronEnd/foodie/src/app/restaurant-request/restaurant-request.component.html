@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<div class="button-group">
+    <button class="button" (click)="restaurantList()">Restaurant List</button>
+    <button class="button" (click)="users()">Users</button>
+</div>
+<h2>Restaurant Requests</h2>
+<div class="card-container" >
+    <div *ngFor="let restoOwner of restaurants" >
+        <div *ngFor="let restaurant of restoOwner.restaurant"style="float: left;" >
+            <div *ngIf="!restaurant.status">
+            <div class="card" >
+                <div class="card-details">
+                    <h3 class="card-title">Owner Id: {{ restoOwner.ownerId }}</h3>
+                    <p class="card-info">Restaurant Name: {{ restaurant.restaurantName }}</p>
+                    <p class="card-info">⭐ {{ restaurant.rating }}</p>
+                    <p class="card-info">Location: {{ restaurant.location }}</p>
+                    <button class="button"  (click)="approve(this.restoOwner.ownerId,this.restaurant.restaurantName)">Approve</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

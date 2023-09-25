@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="body">
+    <!--Top menu-->
+    <div class="nav-bar">
+           <a (click)="logo()" routerLink="/userview"><img src="/assets/Logo.png" alt="logo"></a>
+           <a routerLinkActive="search" *ngIf="validForSearch()"><i class="fa fa-search" *ngIf="validForSearch()"  style="font-size:30px"><input class="input" type="text"  placeholder="search" [(ngModel)]="search" (input)="sendText()"></i>Search</a>
+           <a routerLinkActive="faq" routerLink="/faq"><i class="fa fa-life-bouy" style="font-size:30px"></i>&nbsp;Help</a>
+           <div class="dropdown">
+            <!-- <button class="dropbtn">Dropdown</button>--><a><i class="dropbtn" class="fa fa-user" style="font-size:30px;margin-right: 5px;"></i>{{login}}<i class="fa fa-star" *ngIf="this.role=='Owner'" style="font-size:10px;color:yellow;position: relative;top: -15px;"></i><i class="fa fa-gear" *ngIf="this.role=='admin'" style="font-size:10px;color:yellow;position: relative;top: -15px;"></i></a>
+            <div class="dropdown-content">
+                <span *ngIf="loggedI()"><a routerLink="/login"  routerLinkActive="/login">Login</a></span>
+              <span *ngIf="loggedO()"><a (click)="logOut()" routerLink="/login" routerLinkActive="/login">Logout</a></span>
+              <span  *ngIf="validUser()"><a routerLink="/profile">Profile</a></span>
+            </div>
+           </div> 
+           <mat-icon matBadgeSize="large" matBadge={{this.cartSize}} matBadgeColor="warn"><span *ngIf="getloginBy()"><a  (click)="goToCart()"><i class="fa fa-shopping-cart" style="font-size:30px"></i>&nbsp;Cart<i   style="font-size:13px;color:red;font-style: normal;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-weight: bold;position: relative;top: -15px;padding: auto;border-radius: 20px;" *ngIf="cartSize!=0 || loggedI "></i></a></span></mat-icon>
+           <!-- Include text description of the icon's meaning for screen-readers -->
+           <span class="cdk-visually-hidden">
+             <!-- Example with a home icon with overlaid badge showing the number 15 -->
+           </span>
+           <!-- <span *ngIf="getloginBy()"><a  (click)="goToCart()"><i class="fa fa-shopping-cart" style="font-size:30px"></i>&nbsp;Cart<i   style="font-size:13px;color:red;font-style: normal;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-weight: bold;position: relative;top: -15px;padding: auto;border-radius: 20px;" *ngIf="cartSize!=0 || loggedI ">{{this.cartSize}}</i></a></span> -->
+    </div> 
+</div>    
+
+ 
+ 

@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<h2>Orders Pending Acceptance</h2>
+<div class="card-container">
+    <div *ngFor="let user of users">
+        <div *ngFor="let order1 of user.order">
+            <div *ngIf="!order1.status">
+                
+                    <div class="card">
+                        <div class="order-details">
+                            <div class="allAttributes">User EmailID: {{ user.emailId }}</div>
+                            <div class="allAttributes">Order ID: {{ order1.orderId }}</div>
+                            <div class="allAttributes">Restaurant Name: {{ order1.restaurantName }}</div>
+                            <div style="display: flex;">
+                                <div>
+                                    <div *ngFor="let item of order1.item, let i=index" class="allAttributes">
+                                        <div>order Item {{i+1}}:{{item.itemName}}</div>
+                                    </div>
+                                </div>
+                                <div class="allAttributes" style="margin-left: 100px;">Order Address:<br>
+                                    {{order1.address.unitNo}} {{order1.address.buildingName}},<br>
+                                    {{order1.address.street}},<br> near
+                                    {{order1.address.landMark}}, {{order1.address.area}},<br> {{order1.address.city}}
+                                    {{order1.address.pinCode}}</div>
+                            </div>
+                            <button class="button" (click)="approveOrder(this.user.emailId,this.order1.orderId)">Accept Order</button>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top: 50px;">
+    <h2>Accepted Orders</h2>
+    <div class="card-container"  >
+        <div *ngFor="let user of this.users" >
+            <div *ngFor="let order1 of user.order" style="float: left;">
+            <div *ngIf="order1.status"  >
+                    <div class="card"  >
+                        <div class="order-details">
+                            <div class="allAttributes">User EmailID: {{ user.emailId }}</div>
+                            <div class="allAttributes">Order ID: {{ order1.orderId }}</div>
+                            <div class="allAttributes">Restaurant Name: {{ order1.restaurantName }}</div>
+                            <div style="display: flex;">
+                                <div>
+                                    <div *ngFor="let item of order1.item, let i=index" class="allAttributes">
+                                        <div>order Item {{i+1}}:{{item.itemName}}</div>
+                                    </div>
+                                </div>
+                                <div class="allAttributes" style="margin-left: 100px;">Order Address:<br>
+                                    {{order1.address.unitNo}} {{order1.address.buildingName}},<br>
+                                    {{order1.address.street}},<br> near
+                                    {{order1.address.landMark}}, {{order1.address.area}},<br> {{order1.address.city}}
+                                    {{order1.address.pinCode}}</div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<div class="button-group">
+  <button class="button" (click)="restaurantList()">Restaurant List</button>
+  <button class="button" (click)="restaurantReq()">Restaurant Requests</button>
+</div>
+<h2>Users</h2>
+<div class="card-container">
+  <div *ngFor="let user of users" >
+    <div *ngIf="user.emailId!='admin@gmail.com'">
+    <div class="card" >
+      <div class="card-details">
+        <h3 class="card-title">{{ user.firstName }} {{ user.lastName }}</h3>
+        <p class="card-info">Email: {{ user.emailId }}</p>
+        <p class="card-info">Phone: {{ user.phoneNo }}</p>
+        <div *ngIf="user.address[0]!=null">
+        <p class="card-info">Address: {{ user.address[0].unitNo }} {{ user.address[0].buildingName }}, {{
+          user.address[0].street }},</p>
+        <p class="card-info" style="margin-left: 60px;"> near {{ user.address[0].landMark }}, {{ user.address[0].area
+          }},</p>
+        <p class="card-info" style="margin-left: 60px;">{{ user.address[0].city }} {{ user.address[0].pinCode }}</p>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

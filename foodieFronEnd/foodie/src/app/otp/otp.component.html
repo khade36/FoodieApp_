@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<div class="otp-page-wrapper">
+  <div class="btn-back"></div>
+<div class="otp-content-wrapper">
+  Please enter the 6-digit code sent to you at <br/><span class="mobile-number">{{loginEmail}}</span>. &nbsp; <span class="mobile-number-confirmation">Did you enter the correct emailId ?</span>
+</div>
+<form class="otp" (ngSubmit)="submit(myform.value)" #myform="ngForm">
+    <fieldset>
+      <input name="otp1" maxlength="6" ngModel/>
+    </fieldset>
+    <button>VERIFY</button>
+</form>
+<br/>  
+<a (click)="resend()" class="havent-received">I haven't received a code</a>
+</div><br/><br/><br/><br/>
+
+
+<app-footer></app-footer>

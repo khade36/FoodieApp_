@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+.otp fieldset, .otp input {
+    border: none;
+    float: left;
+}
+form {
+  display: flex;
+  justify-content: center;
+}
+.otp fieldset {
+  display: block;
+}
+fieldset input {
+  width: 90px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  border: none;
+  margin-right: 20px;
+  text-align: center;
+  border-bottom: 1px solid black!important;
+}
+fieldset input:focus {
+  border: 1px solid rgba(150,150,150,1);
+}
+.otp-page-wrapper {
+  display:flex;
+  justify-content: space-between;
+  flex-flow: column;
+  height: 20vh;
+  padding: 20px;
+  text-align: center;
+}
+.otp-content-wrapper {
+  font-size: 1.1rem;
+  margin-top: 50px;
+}
+.mobile-number-confirmation {
+  color: orange;
+  font-size: .9rem;
+}
+.havent-received {
+  color: blue;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+  

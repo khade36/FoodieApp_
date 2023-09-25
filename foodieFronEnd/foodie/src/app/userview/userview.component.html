@@ -1,0 +1,42 @@
+<app-header (eventSearch)="getSearchvalue($event)"></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<!-- <button (click)="userHome()">Click here to load</button>
+ -->
+
+<!--<a routerLink="home">-->
+    
+<div *ngFor="let y of userArray" style="margin-right: 110px;margin-left: 110px;">
+    
+        <div class="main" *ngFor="let x of y.restaurant">
+            <div *ngIf="x.status">
+            <div
+                *ngIf="getSearchValue=='' || x.restaurantName.toLowerCase().includes(getSearchValue) || x.location.toLowerCase().includes(getSearchValue) ">
+           
+                <div style="display: flex; float: left;">
+                    <div class="cards" (click)="getItem(y.ownerId,x.restaurantName)">
+                        <div class="cards_item">
+                            <div class="card">
+                                <div class="card_image">
+                                    <img src="..\assets\{{x.restoImage}}" alt="mixed vegetable salad in a mason jar. ">
+                                </div>
+                                <div class="card_content">
+                                    <div class="card_text"> 
+                                        <span (click)="saveFavResto($event,y.ownerId,x)">❤️</span>
+                                        <p class="card_title">
+                                            {{x.restaurantName}}<br />⭐{{x.rating}}<br />{{x.location}}</p>
+                                        <!-- <p class="card_title">⭐{{x.rating}}</p><h3 class="card_title">{{x.location}}</h3> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- </a> -->
+<app-footer></app-footer>

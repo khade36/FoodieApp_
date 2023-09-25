@@ -1,0 +1,184 @@
+<app-header></app-header>
+<div></div>
+<br /><br /><br /><br /><br /><br />
+
+<body>
+  <div class="row" style="display: flex;">
+    <div class="col">
+      <img src=".\assets\signup.jpg" >
+    </div>
+    <div class="col" class="form">
+      <form (ngSubmit)="signUp(myform.value)"  [formGroup]="myform" >
+        <h1> Sign Up </h1>
+        <legend><span class="number">1</span> Your Basic Info</legend>     
+        <!-- <span *ngIf="firstName.touched && firstName.invalid">* FirstName is required</span> -->
+        <div  class="form-group">
+          <div *ngIf="myform.get('firstName')?.invalid && (myform.get('firstName')?.dirty || myform.get('firstName')?.touched)" class="alert alert-danger">
+            <div *ngIf="myform.get('firstName')?.errors?.['required']">
+              First name is required.
+            </div>
+            <div *ngIf="myform.get('firstName')?.errors?.['minlength']">
+              First Name must be at least 2 characters long.
+            </div>
+            <div *ngIf="firstName?.errors?.['maxlength']">
+              First Name cannot be more than 20 characters long.
+            </div>
+            <div *ngIf="firstName?.errors?.['pattern']">
+              First Name should contain only characters.
+            </div>
+          </div>
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName"  formControlName="firstName"  class="form-control" />
+        </div>
+        <!-- {{user.firstName}} -->
+        <div  class="form-group">
+          <!-- <span *ngIf="lastName.touched && lastName.invalid">* Last Name is required</span> -->
+          <div *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)" class="alert alert-danger">
+            <div *ngIf="lastName?.errors?.['required']">
+              Last name required.
+            </div>
+            <div *ngIf="lastName?.errors?.['minlength']">
+              Last Name must be at least 2 characters long.
+            </div>
+            <div *ngIf="lastName?.errors?.['maxlength']">
+              Last Name cannot be more than 20 characters long.
+            </div>
+            <div *ngIf="lastName?.errors?.['pattern']">
+             Last Name should contain only characters.
+            </div>
+          </div>
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" formControlName="lastName" class="form-control">
+        </div>
+
+        <!-- {{user.lastName}}  -->
+
+        <!-- <span *ngIf="phoneNo.touched && phoneNo.pristine">* Phone No is required</span><br />
+        <span *ngIf="phoneNo.invalid && phoneNo.touched">* 10 Digits are required</span>
+        <label for="phoneNo">Phone No:</label>
+        <input type="text" id="phoneNo" name="phoneNo" ngModel #phoneNo="ngModel" minlength="10" maxlength="10"
+          required> -->
+          
+        <div class="form-group">
+          <div *ngIf="myform.get('emailId')?.invalid && (myform.get('emailId')?.dirty || myform.get('emailId')?.touched)" class="alert">
+            <span *ngIf="myform.get('emailId')?.errors?.['required']">* Email Id is required</span>
+            <span *ngIf="myform.get('emailId')?.errors?.['email']">* Invalid email format</span>
+          </div>
+          <span *ngIf="emailExist" class="alert">* Email Id already exists</span>
+          <label for="emailId">Email Id:</label>
+          <input type="email" id="emailId" name="emailId" [(ngModel)]="emailId"  formControlName="emailId" class="form-control" (input)="checkEmail()">
+        </div>
+
+        <!-- {{user.emailId}} -->
+        <div class="form-group">
+          <div *ngIf="phoneNo?.invalid && (phoneNo?.dirty || phoneNo?.touched)" class="alert alert-danger">
+            <div *ngIf="phoneNo?.errors?.['required']">
+              Phone number is required.
+            </div>
+            <div *ngIf="phoneNo?.errors?.['pattern']">
+              Phone number must contain 10 digits with first non zero digit.
+            </div>
+          </div>
+          <label for="phoneNo">Phone Number</label>
+          <input type="text" id="phoneNo" formControlName="phoneNo" class="form-control">
+        </div>
+
+      <!-- {{user.phoneNo}} -->
+        <div class="form-group">
+        <!-- <span *ngIf="password.touched && password.invalid">* Password is required</span> -->
+        
+        <div *ngIf="myform.get('password')?.invalid && (myform.get('password')?.dirty || myform.get('password')?.touched)" class="alert alert-danger">
+          <div *ngIf="myform.get('password')?.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="myform.get('password')?.errors?.['minlength']">
+            Password must be at least 8 characters long.
+          </div>
+          <div *ngIf="myform.get('password')?.errors?.['maxlength']">
+            Password must not exceed 20 characters.
+          </div>
+          <div *ngIf="myform.get('password')?.errors?.['pattern']">
+            Password must contain at least 1 UPPERCASE, 1 lowercase, 1 digit,1 symbol.
+          </div>
+        </div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" formControlName="password" class="form-control" >
+      </div>
+        <!-- {{user.emailId}} -->
+        <!-- <label for="file">Upload Profile Image:</label>
+          <input type="file" name="file" id="file"  ngModel><br/><br/><br/> -->
+
+        <legend><span class="number">2</span> Your Profile</legend>
+
+        <!-- <span *ngIf="userImages.touched && userImages.invalid">* Feild can't be empty</span>  -->
+        
+        <label for="userImages">Profile Picture:</label>
+        <input type="file" id="userImages" name="userImages"   (change)="upload($event)"
+          accept="image/png, image/gif, image/jpeg" />
+        
+        <br /><br />
+
+        <div class="form-group">
+        <div class="alert" *ngIf="role?.invalid && (role?.dirty || role?.touched)">* Role Selection is required</div>
+        <label for="role">Role:</label>
+        <select id="role" name="role" formControlName="role" class="form-control">
+          <option value="User">User</option>
+          <option value="Owner">Restaurant Owner</option>
+        </select>
+      </div>
+        <!-- <legend><span class="number">3</span> Your Address</legend>
+
+          <span *ngIf="unitNo.touched && unitNo.invalid ">* Unit No is required</span>
+          <label for="unitNo">Unit No:</label>
+          <input type="text" id="unitNo" name="unitNo" ngModel #unitNo="ngModel" required> -->
+        <!-- {{user.unitNo}} -->
+
+        <!-- <span *ngIf="buildingName.touched && buildingName.invalid">* Building Name is required</span>
+          <label for="buildingName">Building Name:</label>
+          <input type="text" id="buildingName" name="buildingName" ngModel #buildingName="ngModel" required> -->
+
+        <!-- {{user.buildingName}} -->
+        <!-- <span *ngIf="street.touched && street.invalid">* Street is required</span>
+          <label for="street">Street:</label>
+          <input type="text" id="street" name="street" ngModel #street="ngModel" required> -->
+        <!-- {{user.Street}} -->
+        <!-- <span *ngIf="landMark.touched && landMark.invalid">* Landmark is required</span>
+          <label for="landMark">Landmark:</label>
+          <input type="text" id="landMark" name="landMark" ngModel #landMark="ngModel" required> -->
+
+        <!-- {{user.landMark}} -->
+        <!-- <span *ngIf="area.touched && area.invalid">* Area is required</span>
+          <label for="area">Area:</label>
+          <input type="text" id="area" name="area" ngModel #area="ngModel" required> -->
+
+        <!-- {{user.area}} -->
+        <!-- <span *ngIf="city.touched && city.invalid">* City is required</span>
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" ngModel #city="ngModel" required> -->
+
+        <!-- {{user.area}} -->
+
+
+        <!-- <span *ngIf="pinCode.touched && pinCode.invalid">* Pin Code is required</span>
+          <label for="pinCode">Pin Code:</label>
+          <input type="text" id="pinCode" name="pinCode" ngModel #pinCode="ngModel" required>           -->
+        <!-- {{user.pinCode}} -->
+        <!-- <label for="active">Active:</label>
+          <input name="active"  type="radio" value="false" /> False
+          <input name="active" type="radio" value="null" /> Null
+          <input name="active" type="radio" value="true" /> True
+          <br/><br/> -->
+        <span *ngIf="getValue()"><button class="loader"></button></span>
+        <button type="submit" [disabled]="myform.invalid || emailExist" #button value="true"
+          (click)="get(button.value)">Submit</button>
+      </form>
+    </div> 
+  </div>
+</body>
+
+<div></div>
+<br /><br /><br /><br />
+<br /><br /><br /><br />
+<br /><br /><br /><br />
+<br /><br /><br /><br />
+<app-footer></app-footer>

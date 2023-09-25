@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<!-- <button class="button" (click)="logOut()">Logout</button> -->
+<!-- <button class="button"  (click)="update()">Update Restaurants</button> -->
+<div style="display: flex;">
+  <button class="button" (click)="AddRes()">Add Restaurant</button>
+  <button class="button" (click)="orders()">Orders</button>
+</div>
+<br /><br /><br />
+<div class="box" *ngIf="popWindow()">
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <h2>Add Restaurant</h2>
+      <a class="close" style="cursor: alias;" (click)="closeBtn()">×</a>
+      <div class="content">
+        <form (ngSubmit)="saveResto(myform.value)" #myform="ngForm">
+
+          <label for="restaurantName" style="margin-left: 18px;">Restaurant Name :</label>
+          <input type="text" name="restaurantName" id="restaurantName" ngModel /><br />
+
+          <label for="rating" style="margin-left: 13px;">Restaurant Rating :</label>
+          <input type="number" name="rating" id="rating" ngModel /><br />
+
+          <label for="location">Restaurant Location :</label>
+          <input type="text" name="location" id="location" ngModel /><br />
+
+          <!-- <label for="item">Item :</label>
+      <input type="text" name="Item" id="Item" ngModel/><br/>   -->
+
+          <label for="imageFile">Restaurant Picture:</label>
+          <input type="file" id="imageFile" name="imageFile" (change)="upload($event)" /><br />
+
+          <button class="button" type="submit">Submit</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<head>
+  <!-- fontawsome used for emojis -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<div *ngIf="cardWindow()">
+   
+  <div class="main" *ngFor="let x of this.AllResto">
+  <div class="card">
+    <div class="card_image">
+      <img src="..\assets\{{x.restoImage}}" alt="resto pic" />
+    </div>
+    <div class="card_header">
+      <h2 class="card_header__title">{{x.restaurantName}}</h2>
+      <h2 class="card_header__price">{{x.location}}</h2>
+    </div>
+    <div class="card_description">
+      <div class="card_description__content">
+        <p class="card_description__content-text">⭐{{x.rating}}</p>
+      </div>
+    </div>
+    <div class="card_button">
+      <button class="btn card_button__primary" #button value={{x.restaurantName}}
+        (click)="delteRsto(button.value)">Delete Restaurant</button>
+      <button class="btn card_button__secondary" value={{x.restaurantName}} #items (click)="item(items)">See
+        Items</button>
+    </div>
+  </div>
+  </div>
+</div>
+<app-footer></app-footer>

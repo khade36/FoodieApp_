@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<h2>Favorite Items</h2>
+
+<div class="card-container">
+  <div class="card" *ngFor="let item of fav">
+    <img class="card-img" src="..\assets\{{item.item.itemPic}}" alt="Item Picture">
+    <div class="card-details">
+      <h3 class="card-title">{{ item.item.itemName }}</h3>
+      <p class="card-location">Description: {{ item.item.description }}</p>
+      <p class="card-location">Price: {{ item.item.itemPrice }}</p>
+
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,63 @@
+button{
+    background-color: #0b4b90;
+    padding:10px;
+    border-radius:5px;
+    color:white;
+}
+button:hover{
+    background-color: rgb(240, 244, 3);
+    color: black;
+}
+div{
+    padding-bottom:10px;
+}
+.area-float-login{
+    background-color: #e66f6f;
+    padding-bottom:43px;
+    padding-right:25px;
+    padding-left:25px;
+    border: solid black 2px;
+    margin-right: 5px;
+}
+.area-float-signup{
+    margin-left: 5px;
+    background-color: #69c974;
+    text-align: center;
+    padding:20px; 
+    padding-bottom:42px;
+    padding-top:23px;
+    border: solid black 2px
+}
+.float{
+    display: inline-block;   
+}
+.center{
+    text-align: center;
+    background-color:#96bcd9 /*rgba(128, 255, 0, 0.365)*/;
+    margin-left:200px;
+    margin-right:200px;
+    padding:50px;
+    border-radius:20px;
+}
+span{
+    color:white;
+}
+#emailId{
+    margin-left:30px;
+}
+#password
+{
+    margin-left: 3px;
+}
+.fg-pass{
+    color:black;
+    padding-left:10px;
+    cursor:alias;
+}
+.fg-pass:hover{
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+

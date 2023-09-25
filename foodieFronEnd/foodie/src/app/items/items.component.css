@@ -1,0 +1,164 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+float: left;
+}
+
+.cards_item {
+  display: flex;
+  float: left;
+  padding: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
+  align-items: center;
+}
+
+.card_image {
+  max-height: 250px;
+  position: relative;
+  padding:10px
+}
+
+.card_image img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 2px 0px 5px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* padding: 20px 1rem 10px; */
+  border-radius: 16px;
+  height: fit-content;
+  
+  
+}
+
+.card_content {
+  padding: 0.1rem 0;
+}
+
+.price {
+  position: absolute;
+  bottom: 10px;
+  right: -3px;
+  border-top-left-radius: 500rem;
+  border-bottom-left-radius: 500rem;
+  padding-right: 25px;
+  padding-left: 35px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff;
+  background: #538e00;
+}
+
+.card_title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 700;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.card_text {
+  margin-top: 16px;
+  font-size: 17px;
+  text-align:center;
+}
+
+.box {
+            width: 20%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            border: 2px solid #fff;
+            border-radius: 20px/50px;
+            background-clip: padding-box;
+            text-align: center;
+          }
+          #button {
+            font-size: 1em;
+            padding: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+            background-color: black;
+          }
+          /* #button:hover {
+            background: black;
+            color: white;
+          } */
+          .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: visible;
+            opacity: 1;
+          }
+          .overlay:target {
+            visibility: hidden;
+            opacity: 0;
+            display:none
+          }
+          .popup { position: relative;
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            
+            transition: all 5s ease-in-out; }
+
+.popup .close       { position: absolute; top: 20px; right: 30px; transition: all 200ms;background-color:white;
+                      font-size: 30px; font-weight: bold; text-decoration: none; }
+.popup .close:hover { color: orange; }
+.popup .content     { max-height: 30%; overflow: auto; }
+ 
+input{
+  margin-bottom:10px;
+}
+button{
+  margin-left:10px;
+  background-color:#0b4b90;
+  color:rgb(0, 0, 0);
+}
+.main{
+ 
+ display: inline-block;
+ padding: 0px;
+ 
+  /* width:35%; */
+}
+.priceInput{
+  width:20%;
+}
+  button, input[type="submit"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

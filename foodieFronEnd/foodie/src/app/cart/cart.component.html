@@ -1,0 +1,132 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<div class="cart-container">
+    <h2>Cart</h2>
+    <h3 class="restaurantName">Restaurant: {{ carts.restaurantName }}</h3>
+
+    <div class="card">
+        <div class="card-header">Items Selected</div>
+
+        <div class="card-body">
+            <div *ngFor="let item of carts.item">
+                <div class="card" class="cardIn">
+
+                    <div class="card-body">
+                        <div style="display: flex;">
+                            <div>
+                                <div>Item Name: {{item.itemName}}</div>
+                                <div>Item Price: {{item.itemPrice}}</div>
+                                <div style="display: flex;">
+                                    <div style="margin-right:5px ;">Item Qty: </div>
+                                    <button class="qtyBtn" style="margin-right:5px ;"
+                                        (click)="changeQty(this.item.itemName,item.itemQty =  item.itemQty - 1,this.user.emailId) ">-</button>
+                                    <div style="margin-right:5px ;" class="qty-display"> {{ item.itemQty }}</div>
+                                    <button class="qtyBtn" style="margin-right:5px ;"
+                                        (click)="changeQty(this.item.itemName,item.itemQty =  item.itemQty + 1,this.user.emailId)">+</button>
+
+                                </div>
+                                <div>Item description: {{item.description}}</div>
+                            </div>
+                            <img src="..\assets\{{item.itemPic}}"  alt="mixed vegetable salad in a mason jar. ">
+                            <button class="deletebtn"
+                                (click)="deleteItem(this.item.itemName,this.item.itemPrice,this.item.itemQty)"
+                                >Delete
+                                item</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card" class="address">
+        <div class="card-header" class="addressHeader">Selected Address</div>
+        <div style="display: flex;">
+            <div class="card-body" style="margin-left: 50px;">
+                <div style="margin-left: 50px;">unitNo: {{user.address[i].unitNo}} </div>
+                <div style="margin-top: 5px;">Building Name: {{user.address[i].buildingName}} </div>
+                <div style="margin-left: 55px;margin-top: 5px;">Street: {{user.address[i].street}} </div>
+                <div style="margin-left: 25px;margin-top: 5px;">Land Mark: {{user.address[i].landMark}} </div>
+                <div style="margin-left: 65px;margin-top: 5px;">Area: {{user.address[0].area}} </div>
+                <div style="margin-left: 70px;margin-top: 5px;">City: {{user.address[0].city}} </div>
+                <div style="margin-left: 40px;margin-top: 5px;">Pin Code: {{user.address[0].pinCode}} </div>
+                <button class="addAddress" (click)="AddRes()">Change Address</button>
+            </div>
+            <div>
+
+                <button class="changeAddress" routerLink="/profile">Add New Address</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="get()" class="box">
+        <span class="overlay1">
+            <div style="margin-top: 50%;" class="popup1"><button class="loader"></button></div>
+        </span>
+    </div>
+
+    <div class="card" class="payment">
+        <div class="card-header" class="addressHeader">Payment Section</div>
+        <div style="display: flex;">
+
+            <div class="card" class="address" style="margin-top: 20px;margin-left: 20px;">
+                <div class="card-header" class="addressHeader">Available Order Payment Method</div>
+                <div style="display: flex;">
+                    <div class="card-body">
+                        <div style="margin-left: 10px;">Cash On Delivery ✓</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="card-body" style="margin-left: 50px;">
+                <div style="margin-left: 120px;">Sub Total: {{this.subTotal}} ₹ </div>
+                <div style="margin-top: 5px;">GST and restaurant charges: {{this.gstResto}} ₹</div>
+                <div style="margin-left: 73px;margin-top: 5px;">Delivery Charges: {{this.delivery}} ₹ </div>
+                <div class="card-header" style="float:right;margin-left: 25px;margin-top: 15px;">Grand Total:
+                    {{this.grandTotal}} ₹ </div>
+            </div>
+        </div>
+    </div>
+    <button class="order-button" [disabled]="!this.cart"
+        (click)="orderNow(this.carts.ownerId,this.carts.restaurantName,this.carts.item,this.user.address[this.i])">Order
+        Now
+    </button>
+</div>
+<app-footer></app-footer>
+
+
+
+<!-- ---------------popUp-------------------- -->
+<div class="box" *ngIf="popWindow()">
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Change Address</h2>
+            <a class="close" style="cursor: alias;" (click)="closeBtn()">×</a>
+            <div class="content">
+                <div *ngFor="let address of user.address; let i=index ">
+                    <div class="card" class="address">
+                        <div class="card-header" class="addressHeader">Address: {{i+1}}</div>
+                        <div style="display: flex;">
+                            <div class="card-body">
+                                <div style="margin-left: 20px;">Unit No: {{address.unitNo}} </div>
+                                <div>Building Name: {{address.buildingName}} </div>
+                                <div style="margin-left: 65px;">Street: {{address.street}} </div>
+                                <div style="margin-left: 55px;">Land Mark: {{address.landMark}} </div>
+                                <div style="margin-left: 106px;">Area: {{address.area}} </div>
+                                <div style="margin-left: 60px;">City: {{address.city}} </div>
+                                <div style="margin-left: 55px;">Pin Code: {{address.pinCode}} </div>
+                            </div>
+                            <button class="insideBtn" (click)="changeAddress(this.i)">Select Address</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

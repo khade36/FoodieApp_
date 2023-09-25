@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<!-- login form -->
+<div class="center">
+<div class="float">    
+<form class="area-float-login" (ngSubmit)="login(myform.value)" #myform="ngForm">
+  <br/><br/>
+  <h1 style="color:white;">Sign In</h1>  
+  <div>
+    <label for="emailId">Email :</label>
+    <input name="emailId" #emailId="ngModel" type="text" id="emailId" ngModel><br/>
+    <span *ngIf="emailId.touched && emailId.pristine">* Email required</span>
+  </div>
+  <div>
+    <label for="password">Password :</label>
+    <input name="password" type="password" id="password" #password="ngModel" ngModel><br/>
+    <span *ngIf="password.touched && password.pristine">* Password required</span>
+  </div>
+  
+  <div>
+  <button type="submit">Submit</button>
+  <a class="fg-pass" routerLink="/password">Forgot Password</a>
+  <span style="color:white;padding-left:10px;">{{invalid}}</span>
+  </div>
+</form> 
+</div>
+
+
+<div class="float">
+<div class="area-float-signup">
+    <h1 style="color:white;">Sign Up</h1>
+    <h1>Hello,Friend</h1>
+    <p>Enter your details and start journey with us</p>
+    <div>
+        <button type="submit" (click)="navigate()">Sign Up</button>
+    </div>
+</div> 
+</div>
+</div>   
+<app-footer></app-footer>
+

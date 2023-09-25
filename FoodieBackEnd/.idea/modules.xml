@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Foodie/Foodie.iml" filepath="$PROJECT_DIR$/Foodie/Foodie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FoodieBackEnd.iml" filepath="$PROJECT_DIR$/.idea/FoodieBackEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Foodie/cart/cart.iml" filepath="$PROJECT_DIR$/Foodie/cart/cart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Foodie/favourite/favourite.iml" filepath="$PROJECT_DIR$/Foodie/favourite/favourite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Foodie/orders/orders.iml" filepath="$PROJECT_DIR$/Foodie/orders/orders.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Foodie/restaurant/restaurant.iml" filepath="$PROJECT_DIR$/Foodie/restaurant/restaurant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Foodie/user/user.iml" filepath="$PROJECT_DIR$/Foodie/user/user.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,108 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+
+<div class="profile-card">
+  <div class="profile-container">
+    <div class="profile-pic" class="upperCard">
+      <div style="display: flex;">
+        <img src="data:image/jpeg;base64,{{user.userImages.picByte}}" height="150px" width="150px"
+          style="border-radius:50%" />
+        <!-- <div (click)="editPic()" class="editpic">🖉 Edit</div> -->
+        <div style="margin-top: 20px;margin-left: 80px;">
+          <h2>{{ user.firstName }} {{user.lastName}} </h2>
+          <p>Email ID: {{ user.emailId }}</p>
+          <p>Phone: {{ user.phoneNo }}</p>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="profile-details" style="width:600px">
+
+      <div *ngFor="let address of user.address">
+        <div style="border:2px solid black; padding: 5px;margin-bottom: 10px;">
+          <div style="margin: 20px;">
+            <p>{{address.unitNo}} {{address.buildingName}}, {{address.street}}, near
+              {{address.landMark}}, </p>
+            <p>{{address.area}}, {{address.city}} {{address.pinCode}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="addAddress"
+        style="margin:20px;border: solid black 1px;padding: 10px;padding-top: 12px; border-radius: 10px;"
+        (click)="AddRes()">Add Address</div>
+      <div class="orders"
+        style="margin:20px;border: solid black 1px;padding: 10px;padding-top: 12px; border-radius: 10px;"
+        routerLink="/orders">Orders</div>
+    </div>
+  </div>
+  <div class="favorite-section">
+    <div class="favorite-card" (click)="GetFavResto()">
+      <h3 style="font-size: 35px;">❤️</h3>
+      <h3> Restaurants</h3>
+    </div>
+    <div class="favorite-card" (click)="GetFavItem()">
+      <h3 style="font-size: 35px;">❤️</h3>
+      <h3>Items</h3>
+    </div>
+  </div>
+</div>
+
+
+<!-- --------------------popUp1---------------------------->
+<div class="box" *ngIf="popWindow()">
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <h2>Add Address</h2>
+      <a class="close" style="cursor: alias;" (click)="closeBtn()">×</a>
+      <div class="content">
+        <form (ngSubmit)="saveAddress(myform.value)" #myform="ngForm">
+          <span class="error" *ngIf="unitNo.touched && unitNo.invalid">* Unit No. is required</span><br />
+          <label for="unitNo" style="margin-left: 45px;margin-right: 10px;">Unit No :</label>
+          <input type="text" name="unitNo" id="unitNo" ngModel #unitNo="ngModel" required /><br />
+          <span class="error" *ngIf="buildingName.touched && buildingName.invalid">* Building Name is
+            required</span><br />
+          <label for="buildingName" style="margin-right: 10px;">Building Name :</label>
+          <input type="text" name="buildingName" id="buildingName" ngModel #buildingName="ngModel" required /><br />
+          <span class="error" *ngIf="street.touched && street.invalid">* Street is required</span><br />
+          <label for="street" style="margin-left: 55px;margin-right: 10px;">Street :</label>
+          <input type="text" name="street" id="street" ngModel #street="ngModel" required /><br />
+          <span class="error" *ngIf="landMark.touched && landMark.invalid">* Land Mark is required</span><br />
+          <label for="landMark" style="margin-left: 30px;margin-right: 10px;">Land Mark:</label>
+          <input type="text" name="landMark" id="landMark" ngModel #landMark="ngModel" required /><br />
+          <span class="error" *ngIf="area.touched && area.invalid">* Area is required</span><br />
+          <label for="area" style="margin-left: 67px;margin-right: 10px;">Area:</label>
+          <input type="text" name="area" id="area" ngModel #area="ngModel" required /><br />
+          <span class="error" *ngIf="city.touched && city.invalid">* City is required</span><br />
+          <label for="city" style="margin-left: 72px;margin-right: 10px;">City:</label>
+          <input type="text" name="city" id="city" ngModel #city="ngModel" required /><br />
+          <span class="error" *ngIf="pinCode.touched && pinCode.invalid">* Pin Code is required</span><br />
+          <label for="pinCode" style="margin-left: 40px;margin-right: 10px;">Pin Code:</label>
+          <input type="number" name="pinCode" id="pinCode" ngModel #pinCode="ngModel" required /><br />
+          <button class="button" style="margin-top: 15px;" [disabled]="myform.invalid" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------popUp2---------------------------->
+<div class="box" *ngIf="popWindow2()">
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <h2>Profile Image</h2>
+      <a class="close" style="cursor: alias;" (click)="closeBtn2()">×</a>
+      <div class="content">
+        <label for="userImages">Upload Profile Image:</label>
+        <input type="file" id="userImages" name="userImages" (change)="upload($event)"
+          accept="image/png, image/gif, image/jpeg" />
+        <br /><br />
+        <button type="submit" [disabled]="!this.present" #button value="true" (click)="uploadImage()">Upload
+          Image</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

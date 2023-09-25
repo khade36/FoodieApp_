@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div></div>
+<br/><br/><br/><br/><br/><br/>
+<div class="orders-container">
+    <h2>Orders</h2>
+
+    <div class="cardOuter">
+        <div class="card-header">Confirmation Pending Orders</div>
+        <div class="card-body">
+            <div class="order-card" *ngFor="let order of orders">
+                <div *ngIf="!order.status">
+                    <div class="card"
+                        style="padding: 5px; padding-bottom: 15px;margin-bottom: 10px;margin-left: 20px;margin-right: 20px;width:910px;padding-top: 10px;">
+                        <div class="order-details">
+                            <div style="display: flex;">
+                            <div>
+                            <div class="allAttributes">Order ID: {{ order.orderId }}</div>
+                            <div class="allAttributes">Restaurant Name: {{ order.restaurantName }}</div>
+                              
+                           
+                                
+                                    <div *ngFor="let item of order.item, let i=index" class="allAttributes">
+                                        <div>order Item {{i+1}}: {{item.itemName}}</div>
+                                    </div>
+                                </div>
+                                <div class="allAttributes" style="margin-left: 150px;">Order Address:<br>
+                                    {{order.address.unitNo}} {{order.address.buildingName}},<br>
+                                    {{order.address.street}},<br> near
+                                    {{order.address.landMark}}, {{order.address.area}},<br> {{order.address.city}}
+                                    {{order.address.pinCode}}</div>
+                                <button class="delete-button" (click)="deleteOrder(this.order.orderId)">Cancel
+                                    Order</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box" *ngIf="get()">
+        <span style="margin-left:5% ;margin-top:5% ;" class="overlay">
+            <div class="popup"><button class="loader"></button></div>
+        </span>
+    </div>
+    <div class="cardOuter" style="margin-top: 50px;">
+        <div class="card-header" style="margin-bottom: 40px;">Confirmed Orders</div>
+        <div class="order-card" *ngFor="let order of orders">
+            <div *ngIf="order.status">
+                <div class="card"
+                    style="display: flex;padding:5px;padding-bottom: 15px;margin-bottom: 10px;margin-left: 35px;margin-right: 20px;width:920px;">
+                    <div class="order-details">
+                        <div class="allAttributes">Order ID: {{ order.orderId }}</div>
+
+                        <div class="allAttributes">Restaurant Name: {{ order.restaurantName }}</div>
+                        <div style="display: flex;">
+                            <div>
+                                <div *ngFor="let item of order.item, let i=index" class="allAttributes">
+                                    <div>order Item {{i+1}}:{{item.itemName}}</div>
+                                </div>
+                            </div>
+                            <div class="allAttributes" style="margin-left: 100px;">Order Address:<br>
+                                {{order.address.unitNo}} {{order.address.buildingName}},<br>
+                                {{order.address.street}},<br> near
+                                {{order.address.landMark}}, {{order.address.area}},<br> {{order.address.city}}
+                                {{order.address.pinCode}}</div>
+                        </div>
+                    </div>
+
+                    <!-- <button class="delete-button" (click)="deleteOrder(this.order.orderId)">Cancel Order</button> -->
+                </div>
+            </div>
+            <!-- <div *ngIf="empty"> No placed order</div> -->
+        </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>
